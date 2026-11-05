@@ -87,12 +87,12 @@ const pt = {
     privacidade: 'Usamos seu e-mail só para falar da Korpo. Você pode sair da lista quando quiser.',
     linkPrivacidade: 'Política de privacidade',
   },
-  rodape: { empresa: 'Uma empresa MLB Innovation Ltd, Reino Unido', privacidade: 'Privacidade' },
+  rodape: { privacidade: 'Privacidade' },
   priv: {
     titulo: 'Política de privacidade',
     atualizado: 'Atualizada em 5 de novembro de 2026.',
     blocos: [
-      { t: 'Quem somos', d: 'A Korpo é um produto da MLB Innovation Ltd, empresa registrada na Inglaterra e no País de Gales, responsável pelos dados coletados neste site.' },
+      { t: 'Quem somos', d: 'Korpo é um nome comercial da MLB Innovation Ltd, empresa registrada na Inglaterra e no País de Gales sob o nº 11990169, responsável pelos dados coletados neste site.' },
       { t: 'O que coletamos', d: 'Quando você entra na lista de espera, guardamos seu nome, e-mail, o nome da igreja, a cidade e o país, a faixa de membros e o idioma da página. Não usamos cookies de rastreamento nem ferramentas de publicidade neste site.' },
       { t: 'Para que usamos', d: 'Só para falar com você sobre a Korpo: avisar quando a sua igreja puder entrar e tirar dúvidas. A base legal é o seu consentimento (UK GDPR, GDPR e LGPD).' },
       { t: 'Onde ficam os dados', d: 'Num banco de dados da Supabase, protegido, que só a equipe da Korpo acessa. Nunca vendemos nem compartilhamos seus dados com terceiros para publicidade.' },
@@ -180,12 +180,12 @@ const en: Textos = {
     privacidade: 'We only use your email to talk about Korpo. You can leave the list at any time.',
     linkPrivacidade: 'Privacy policy',
   },
-  rodape: { empresa: 'A company of MLB Innovation Ltd, United Kingdom', privacidade: 'Privacy' },
+  rodape: { privacidade: 'Privacy' },
   priv: {
     titulo: 'Privacy policy',
     atualizado: 'Updated 5 November 2026.',
     blocos: [
-      { t: 'Who we are', d: 'Korpo is a product of MLB Innovation Ltd, a company registered in England and Wales, which is responsible for the data collected on this site.' },
+      { t: 'Who we are', d: 'Korpo is a trading name of MLB Innovation Ltd, a company registered in England and Wales under company number 11990169, which is responsible for the data collected on this site.' },
       { t: 'What we collect', d: 'When you join the waitlist we store your name, email, church name, city and country, membership range and the page language. This site uses no tracking cookies or advertising tools.' },
       { t: 'How we use it', d: 'Only to contact you about Korpo: to tell you when your church can join and to answer questions. The legal basis is your consent (UK GDPR, GDPR and LGPD).' },
       { t: 'Where the data is kept', d: 'In a secure Supabase database that only the Korpo team can access. We never sell your data or share it with third parties for advertising.' },
@@ -272,12 +272,12 @@ const es: Textos = {
     privacidade: 'Usamos tu correo solo para hablarte de Korpo. Puedes salir de la lista cuando quieras.',
     linkPrivacidade: 'Política de privacidad',
   },
-  rodape: { empresa: 'Una empresa de MLB Innovation Ltd, Reino Unido', privacidade: 'Privacidad' },
+  rodape: { privacidade: 'Privacidad' },
   priv: {
     titulo: 'Política de privacidad',
     atualizado: 'Actualizada el 5 de noviembre de 2026.',
     blocos: [
-      { t: 'Quiénes somos', d: 'Korpo es un producto de MLB Innovation Ltd, empresa registrada en Inglaterra y Gales, responsable de los datos recogidos en este sitio.' },
+      { t: 'Quiénes somos', d: 'Korpo es un nombre comercial de MLB Innovation Ltd, empresa registrada en Inglaterra y Gales con el número 11990169, responsable de los datos recogidos en este sitio.' },
       { t: 'Qué recogemos', d: 'Cuando te unes a la lista de espera guardamos tu nombre, tu correo, el nombre de la iglesia, la ciudad y el país, el número de miembros y el idioma de la página. Este sitio no usa cookies de seguimiento ni herramientas publicitarias.' },
       { t: 'Para qué lo usamos', d: 'Solo para hablarte de Korpo: avisarte cuando tu iglesia pueda entrar y responder dudas. La base legal es tu consentimiento (RGPD, UK GDPR y LGPD).' },
       { t: 'Dónde están los datos', d: 'En una base de datos segura de Supabase a la que solo accede el equipo de Korpo. Nunca vendemos tus datos ni los compartimos con terceros con fines publicitarios.' },
@@ -364,12 +364,12 @@ const fr: Textos = {
     privacidade: 'Nous utilisons votre e-mail uniquement pour vous parler de Korpo. Vous pouvez quitter la liste à tout moment.',
     linkPrivacidade: 'Politique de confidentialité',
   },
-  rodape: { empresa: 'Une société MLB Innovation Ltd, Royaume-Uni', privacidade: 'Confidentialité' },
+  rodape: { privacidade: 'Confidentialité' },
   priv: {
     titulo: 'Politique de confidentialité',
     atualizado: 'Mise à jour le 5 novembre 2026.',
     blocos: [
-      { t: 'Qui sommes-nous', d: 'Korpo est un produit de MLB Innovation Ltd, société immatriculée en Angleterre et au Pays de Galles, responsable des données collectées sur ce site.' },
+      { t: 'Qui sommes-nous', d: 'Korpo est un nom commercial de MLB Innovation Ltd, société immatriculée en Angleterre et au Pays de Galles sous le numéro 11990169, responsable des données collectées sur ce site.' },
       { t: 'Ce que nous collectons', d: 'Lorsque vous rejoignez la liste d’attente, nous enregistrons votre nom, votre e-mail, le nom de l’église, la ville et le pays, la tranche de membres et la langue de la page. Ce site n’utilise ni cookies de suivi ni outils publicitaires.' },
       { t: 'Pourquoi', d: 'Uniquement pour vous parler de Korpo : vous prévenir quand votre église pourra nous rejoindre et répondre à vos questions. La base légale est votre consentement (RGPD, UK GDPR et LGPD).' },
       { t: 'Où sont les données', d: 'Dans une base de données Supabase sécurisée, accessible uniquement à l’équipe Korpo. Nous ne vendons jamais vos données et ne les partageons pas à des fins publicitaires.' },
