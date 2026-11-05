@@ -1,0 +1,212 @@
+---
+import Base from '../layouts/Base.astro';
+import Topo from './Topo.astro';
+import Rodape from './Rodape.astro';
+import { textos, type Lang } from '../i18n/textos';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = textos[lang];
+
+// Supabase do Korpo (chave publicável: pode ficar no site; a tabela só aceita o RPC).
+const SUPABASE_URL = 'https://izyzyandpcpxmyjqvjcy.supabase.co';
+const SUPABASE_CHAVE = 'sb_publishable_pE7YzEuZxp1gyGMR1WfH1A_lxvt3F8l';
+
+const icones = [
+  '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+  '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+  '<rect x="2" y="4" width="20" height="16" rx="3"/><path d="m10 9 5 3-5 3z"/>',
+];
+const coresIgrejas = ['#7A1F2B', '#0F5C4D', '#1D4E89'];
+const faixas = ['ate_50', '51_200', '201_500', 'mais_500'];
+const msgs = JSON.stringify({
+  enviando: t.lista.enviando, botao: t.lista.botao, sucesso: t.lista.sucesso, erro: t.lista.erro,
+  obrigatorios: t.lista.obrigatorios, emailInvalido: t.lista.emailInvalido,
+});
+---
+<Base lang={lang} pagina="inicio">
+  <Topo lang={lang} pagina="inicio" />
+  <main id="conteudo">
+    <section class="abertura">
+      <div class="miolo linha">
+        <div class="abertura__texto">
+          <p class="selo-breve">{t.hero.selo}</p>
+          <h1>{t.hero.titulo}</h1>
+          <p class="abertura__lead">{t.hero.texto}</p>
+          <div class="acoes">
+            <a class="botao botao--primario" href="#lista">{t.hero.cta1}</a>
+            <a class="botao botao--secundario" href="#recursos">{t.hero.cta2}</a>
+          </div>
+        </div>
+        <div class="celular-wrap" aria-hidden="true">
+          <div class="celular">
+            <div class="celular__tela">
+              <div class="celular__topo"><span>{t.mock.data}</span><strong>{t.mock.igreja}</strong></div>
+              <div class="celular__corpo">
+                <div class="cartao-app"><small>{t.mock.hoje}</small><strong>{t.mock.culto}</strong><span>{t.mock.aoVivo}</span></div>
+                <div class="cartao-app"><small>{t.mock.aviso}</small><strong>{t.mock.avisoTitulo}</strong></div>
+                <div class="cartao-app"><small>{t.mock.escala}</small><span>{t.mock.escalaTexto}</span><span class="ok">{t.mock.confirmado}</span></div>
+                <div class="celular__selo"><span class="selo-korpo"><img src="/korpo-simbolo.svg" alt="" />{t.feito}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recursos" class="secao secao--branca">
+      <div class="miolo">
+        <div class="cabeca-secao">
+          <p class="rotulo">{t.recursos.rotulo}</p>
+          <h2 class="titulo-secao">{t.recursos.titulo}</h2>
+        </div>
+        <ul class="grade">
+          {t.recursos.itens.map((r, i) => (
+            <li class="cartao">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icones[i]} />
+              <h3>{r.t}</h3>
+              <p>{r.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao secao--escura">
+      <div class="miolo linha">
+        <div class="pilha" style="flex: 1 1 440px; min-width: 0">
+          <p class="rotulo">{t.marca.rotulo}</p>
+          <h2 class="titulo-secao">{t.marca.titulo}</h2>
+          <p class="texto-grande">{t.marca.texto}</p>
+        </div>
+        <div class="igrejas" aria-hidden="true">
+          {t.marca.exemplos.map((nome, i) => (
+            <div class="igreja" style={`background: ${coresIgrejas[i]}`}>
+              <strong>{nome}</strong>
+              <span class="selo-korpo"><img src="/korpo-simbolo.svg" alt="" />Korpo</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="secao">
+      <div class="miolo">
+        <div class="cabeca-secao">
+          <p class="rotulo">{t.global.rotulo}</p>
+          <h2 class="titulo-secao">{t.global.titulo}</h2>
+          <p class="texto-grande">{t.global.texto}</p>
+        </div>
+        <ul class="grade grade--4">
+          {t.global.itens.map((g) => (
+            <li class="cartao"><span class="cartao__grande">{g.t}</span><p>{g.d}</p></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="secao secao--branca">
+      <div class="miolo">
+        <div class="cabeca-secao">
+          <p class="rotulo">{t.como.rotulo}</p>
+          <h2 class="titulo-secao">{t.como.titulo}</h2>
+        </div>
+        <ol class="grade">
+          {t.como.passos.map((p, i) => (
+            <li class="cartao"><span class="numero" aria-hidden="true">{i + 1}</span><h3>{p.t}</h3><p>{p.d}</p></li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section id="por-que-korpo" class="secao">
+      <div class="miolo linha">
+        <div class="simbolo-grande"><img src="/korpo-simbolo.svg" alt={t.porque.alt} width="220" height="220" /></div>
+        <div class="pilha" style="flex: 1 1 520px; min-width: 0">
+          <p class="rotulo">{t.porque.rotulo}</p>
+          <h2 class="titulo-secao">{t.porque.titulo}</h2>
+          <p class="texto-grande">{t.porque.texto}</p>
+          <p class="versiculo">{t.porque.versiculo}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="lista" class="secao secao--primaria lista">
+      <div class="miolo linha">
+        <div class="lista__texto pilha">
+          <h2 class="titulo-secao">{t.lista.titulo}</h2>
+          <p class="texto-grande">{t.lista.texto}</p>
+        </div>
+        <form class="form" id="form-lista" novalidate data-url={SUPABASE_URL} data-chave={SUPABASE_CHAVE} data-lang={lang} data-msgs={msgs}>
+          <div class="campo campo--todo"><label for="nome">{t.lista.nome}</label><input id="nome" name="nome" type="text" autocomplete="name" required maxlength="120" /></div>
+          <div class="campo campo--todo"><label for="email">{t.lista.email}</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254" /></div>
+          <div class="campo campo--todo"><label for="igreja">{t.lista.igreja}</label><input id="igreja" name="igreja" type="text" autocomplete="organization" required maxlength="160" /></div>
+          <div class="campo"><label for="cidade">{t.lista.cidade}</label><input id="cidade" name="cidade" type="text" autocomplete="address-level2" maxlength="160" /></div>
+          <div class="campo"><label for="membros">{t.lista.membros}</label>
+            <select id="membros" name="membros">
+              {t.lista.faixas.map((f, i) => <option value={faixas[i]}>{f}</option>)}
+            </select>
+          </div>
+          <div class="mel" aria-hidden="true"><label for="site">Site</label><input id="site" name="site" type="text" tabindex="-1" autocomplete="off" /></div>
+          <p class="form__msg" id="form-msg" role="status" aria-live="polite" hidden></p>
+          <button class="botao botao--escuro" type="submit">{t.lista.botao}</button>
+          <p class="form__nota">{t.lista.privacidade} <a href={lang === 'pt' ? '/privacidade/' : lang === 'en' ? '/en/privacy/' : lang === 'es' ? '/es/privacidad/' : '/fr/confidentialite/'}>{t.lista.linkPrivacidade}</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <Rodape lang={lang} />
+</Base>
+
+<script>
+  const form = document.getElementById('form-lista') as HTMLFormElement | null;
+  if (form) {
+    const msg = document.getElementById('form-msg') as HTMLParagraphElement;
+    const botao = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const m = JSON.parse(form.dataset.msgs || '{}');
+    const mostrar = (texto: string, ok: boolean) => {
+      msg.textContent = texto;
+      msg.className = 'form__msg ' + (ok ? 'form__msg--ok' : 'form__msg--erro');
+      msg.hidden = false;
+    };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const d = new FormData(form);
+      if (String(d.get('site') || '')) return; // robô
+      const nome = String(d.get('nome') || '').trim();
+      const email = String(d.get('email') || '').trim();
+      const igreja = String(d.get('igreja') || '').trim();
+      if (!nome || !email || !igreja) return mostrar(m.obrigatorios, false);
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return mostrar(m.emailInvalido, false);
+      botao.disabled = true;
+      botao.textContent = m.enviando;
+      try {
+        const r = await fetch(`${form.dataset.url}/rest/v1/rpc/entrar_lista_espera`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', apikey: form.dataset.chave || '' },
+          body: JSON.stringify({
+            p_nome: nome, p_email: email, p_igreja: igreja,
+            p_cidade: String(d.get('cidade') || '').trim() || null,
+            p_membros: String(d.get('membros') || '') || null,
+            p_idioma: form.dataset.lang,
+          }),
+        });
+        if (r.ok) {
+          form.reset();
+          mostrar(m.sucesso, true);
+        } else {
+          const corpo = await r.text();
+          mostrar(corpo.includes('email_invalido') ? m.emailInvalido : corpo.includes('campos_obrigatorios') ? m.obrigatorios : m.erro, false);
+        }
+      } catch {
+        mostrar(m.erro, false);
+      } finally {
+        botao.disabled = false;
+        botao.textContent = m.botao;
+      }
+    });
+  }
+</script>

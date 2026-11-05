@@ -1,0 +1,28 @@
+---
+import { idiomas, rotas, textos, type Lang, type Pagina } from '../i18n/textos';
+interface Props { lang: Lang; pagina: Pagina }
+const { lang, pagina } = Astro.props;
+const t = textos[lang];
+const inicio = rotas.inicio[lang];
+const ancora = (id: string) => (pagina === 'inicio' ? `#${id}` : `${inicio}#${id}`);
+---
+<a class="pular" href="#conteudo">Skip to content</a>
+<header class="topo">
+  <div class="miolo">
+    <a class="marca" href={inicio} aria-label="Korpo">
+      <img src="/korpo-simbolo.svg" alt="" width="36" height="36" />
+      <span class="wordmark">korpo</span>
+    </a>
+    <nav class="menu" aria-label="Menu">
+      <a href={ancora('recursos')}>{t.nav.recursos}</a>
+      <a href={ancora('como-funciona')}>{t.nav.como}</a>
+      <a href={ancora('por-que-korpo')}>{t.nav.porque}</a>
+      <ul class="idiomas" aria-label={t.nav.idioma}>
+        {idiomas.map((l) => (
+          <li><a href={rotas[pagina][l]} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a></li>
+        ))}
+      </ul>
+      <a class="botao botao--primario" href={ancora('lista')}>{t.nav.lista}</a>
+    </nav>
+  </div>
+</header>

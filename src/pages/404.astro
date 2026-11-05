@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import Topo from '../components/Topo.astro';
+import Rodape from '../components/Rodape.astro';
+---
+<Base lang="pt" pagina="inicio" titulo="Página não encontrada">
+  <Topo lang="pt" pagina="inicio" />
+  <main id="conteudo" class="secao">
+    <div class="texto-legal">
+      <h1>Página não encontrada</h1>
+      <p>Esta página não existe. <a href="/">Voltar para o início</a> · <a href="/en/">Home</a> · <a href="/es/">Inicio</a> · <a href="/fr/">Accueil</a></p>
+    </div>
+  </main>
+  <Rodape lang="pt" />
+</Base>

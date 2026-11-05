@@ -1,0 +1,16 @@
+---
+import { rotas, textos, type Lang } from '../i18n/textos';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = textos[lang];
+---
+<footer class="rodape">
+  <div class="miolo">
+    <a class="marca" href={rotas.inicio[lang]} aria-label="Korpo">
+      <img src="/korpo-simbolo.svg" alt="" width="24" height="24" />
+      <span class="wordmark">korpo</span>
+    </a>
+    <span>korpo.church · {t.rodape.empresa}</span>
+    <a href={rotas.privacidade[lang]}>{t.rodape.privacidade}</a>
+  </div>
+</footer>

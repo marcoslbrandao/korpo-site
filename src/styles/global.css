@@ -1,0 +1,163 @@
+/* Korpo — tokens do Design System (tema claro). Fonte da verdade: Korpo Design System. */
+:root {
+  --fundo: #F6F5FB;
+  --superficie: #FFFFFF;
+  --lilas: #E9E7FB;
+  --borda: #DCDAEA;
+  --tinta: #16142B;
+  --texto-suave: #5B5880;
+  --texto-medio: #3A3756;
+  --primaria: #4F46E5;
+  --primaria-forte: #3730A3;
+  --sobre-primaria: #FFFFFF;
+  --sucesso: #0B7A57;
+  --erro: #C8264F;
+  --font-display: "Bricolage Grotesque", "Manrope", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --gutter: max(16px, 4vw);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; }
+a { color: var(--primaria); }
+a:hover { color: var(--primaria-forte); }
+:focus-visible { outline: 3px solid var(--primaria); outline-offset: 2px; }
+
+.pular { position: absolute; left: -9999px; }
+.pular:focus { left: 16px; top: 16px; z-index: 10; background: var(--superficie); padding: 8px 12px; border-radius: var(--radius-sm); }
+
+.secao { padding: 88px var(--gutter); }
+.secao--branca { background: var(--superficie); }
+.secao--escura { background: var(--tinta); color: #F2F1FA; }
+.secao--primaria { background: var(--primaria); color: var(--sobre-primaria); }
+.miolo { max-width: 1200px; margin: 0 auto; }
+.pilha { display: flex; flex-direction: column; gap: 16px; }
+.linha { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
+.cabeca-secao { display: flex; flex-direction: column; gap: 12px; max-width: 46em; margin-bottom: 40px; }
+
+.rotulo { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texto-suave); }
+.secao--escura .rotulo { color: #B9B6D6; }
+.titulo-secao { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; text-wrap: balance; }
+.texto-grande { margin: 0; font-size: 18px; color: var(--texto-medio); max-width: 34em; }
+.secao--escura .texto-grande { color: #D6D4EA; }
+.secao--primaria .texto-grande { color: #E4E2FF; }
+
+.wordmark { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.045em; line-height: 1; }
+
+.botao { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border-radius: var(--radius-md); font: 700 17px/1.2 var(--font-body); text-decoration: none; border: 1px solid transparent; cursor: pointer; }
+.botao--primario { background: var(--primaria); color: var(--sobre-primaria); }
+.botao--primario:hover { background: var(--primaria-forte); color: var(--sobre-primaria); }
+.botao--secundario { background: var(--superficie); color: var(--tinta); border-color: var(--borda); }
+.botao--secundario:hover { color: var(--tinta); border-color: var(--texto-suave); }
+.botao--escuro { background: var(--tinta); color: #FFFFFF; }
+.botao--escuro:hover { background: #2A2750; }
+.botao[disabled] { opacity: 0.7; cursor: progress; }
+
+/* Cabeçalho */
+.topo { padding: 20px var(--gutter); }
+.topo .miolo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.marca { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--tinta); }
+.marca:hover { color: var(--tinta); }
+.marca img { width: 36px; height: 36px; }
+.marca .wordmark { font-size: 30px; }
+.menu { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; font-weight: 600; font-size: 15px; }
+.menu > a:not(.botao) { color: var(--tinta); text-decoration: none; }
+.menu > a:not(.botao):hover { color: var(--primaria); }
+.menu .botao { min-height: 44px; padding: 0 18px; font-size: 15px; }
+.idiomas { display: flex; gap: 2px; padding: 4px; border-radius: 999px; background: var(--lilas); font-size: 13px; margin: 0; list-style: none; }
+.idiomas a { display: block; padding: 4px 10px; border-radius: 999px; color: var(--texto-suave); text-decoration: none; font-weight: 700; }
+.idiomas a[aria-current="true"] { background: var(--superficie); color: var(--tinta); }
+
+/* Abertura */
+.abertura { padding: 48px var(--gutter) 88px; }
+.abertura .linha { gap: 56px; }
+.abertura__texto { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+.selo-breve { margin: 0; align-self: flex-start; padding: 6px 14px; border-radius: 999px; background: var(--lilas); color: var(--primaria-forte); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.abertura h1 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(44px, 6.4vw, 84px); line-height: 0.98; letter-spacing: -0.025em; text-wrap: balance; }
+.abertura__lead { margin: 0; font-size: clamp(18px, 1.6vw, 21px); color: var(--texto-medio); max-width: 33em; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Celular */
+.celular-wrap { flex: 0 1 340px; min-width: 0; display: flex; justify-content: center; }
+.celular { width: 300px; max-width: 100%; border-radius: 44px; background: var(--tinta); padding: 12px; }
+.celular__tela { border-radius: 34px; overflow: hidden; background: #F7F3F3; }
+.celular__topo { background: #7A1F2B; color: #FFFFFF; padding: 28px 18px 18px; display: flex; flex-direction: column; gap: 4px; }
+.celular__topo span { font-size: 12px; opacity: 0.85; }
+.celular__topo strong { font-size: 20px; line-height: 1.2; }
+.celular__corpo { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.cartao-app { background: #FFFFFF; border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
+.cartao-app small { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #7A1F2B; text-transform: uppercase; }
+.cartao-app strong { font-size: 15px; line-height: 1.3; }
+.cartao-app span { font-size: 13px; color: var(--texto-suave); }
+.ok { align-self: flex-start; margin-top: 4px; padding: 4px 10px; border-radius: 999px; background: #E6F6EF; color: var(--sucesso) !important; font-size: 12px !important; font-weight: 700; }
+.selo-korpo { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: #FFFFFF; color: #16142B; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.selo-korpo img { width: 13px; height: 13px; }
+.celular__selo { display: flex; justify-content: center; padding: 6px 0 10px; }
+
+/* Cartões */
+.grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.grade--4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.cartao { background: var(--fundo); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.secao:not(.secao--branca) .cartao { background: var(--superficie); }
+.cartao h3 { margin: 0; font-size: 20px; line-height: 1.3; }
+.cartao p { margin: 0; color: var(--texto-medio); }
+.cartao__grande { font-family: var(--font-display); font-size: 28px; font-weight: 800; line-height: 1.15; }
+.numero { width: 40px; height: 40px; border-radius: 999px; background: var(--primaria); color: var(--sobre-primaria); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+
+/* Marca da igreja */
+.igrejas { flex: 1 1 440px; min-width: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.igreja { border-radius: var(--radius-lg); padding: 18px; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; color: #FFFFFF; }
+.igreja strong { font-size: 16px; line-height: 1.25; }
+.igreja .selo-korpo { align-self: flex-start; font-size: 10px; padding: 4px 9px; }
+.igreja .selo-korpo img { width: 11px; height: 11px; }
+
+/* Por que Korpo */
+.simbolo-grande { flex: 0 1 240px; display: flex; justify-content: center; }
+.simbolo-grande img { width: 220px; }
+.versiculo { margin: 0; font-size: 15px; color: var(--texto-suave); max-width: 40em; }
+
+/* Lista de espera */
+.lista .linha { align-items: flex-start; }
+.lista__texto { flex: 1 1 400px; min-width: 0; }
+.form { flex: 1 1 440px; min-width: 0; background: var(--superficie); color: var(--tinta); border-radius: var(--radius-lg); padding: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.campo { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.campo--todo { grid-column: 1 / -1; }
+.campo label { font-size: 14px; font-weight: 700; }
+.campo input, .campo select { min-height: 48px; padding: 0 14px; border-radius: var(--radius-sm); border: 1px solid var(--borda); font: inherit; background: var(--superficie); color: var(--tinta); min-width: 0; width: 100%; }
+.campo input:focus-visible, .campo select:focus-visible { border-color: var(--primaria); }
+.mel { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form .botao { grid-column: 1 / -1; }
+.form__nota { grid-column: 1 / -1; margin: 0; font-size: 13px; color: var(--texto-suave); }
+.form__msg { grid-column: 1 / -1; margin: 0; padding: 12px 14px; border-radius: var(--radius-sm); font-weight: 600; }
+.form__msg--ok { background: #E6F6EF; color: var(--sucesso); }
+.form__msg--erro { background: #FCE8EE; color: var(--erro); }
+@media (max-width: 520px) { .form { grid-template-columns: minmax(0, 1fr); padding: 20px; } .igrejas { grid-template-columns: minmax(0, 1fr); } .igreja { min-height: 0; } }
+
+/* Rodapé */
+.rodape { padding: 40px var(--gutter); background: var(--tinta); color: #B9B6D6; font-size: 14px; }
+.rodape .miolo { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; align-items: center; }
+.rodape .marca { color: #F2F1FA; }
+.rodape .marca img { width: 24px; height: 24px; }
+.rodape .marca .wordmark { font-size: 22px; }
+.rodape a { color: #D6D4EA; }
+
+/* Página de texto */
+.texto-legal { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+.texto-legal h1 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; }
+.texto-legal h2 { margin: 0 0 6px; font-size: 20px; }
+.texto-legal p { margin: 0; color: var(--texto-medio); }

@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+import { idiomas, htmlLang, rotas, textos, type Lang, type Pagina } from '../i18n/textos';
+
+interface Props {
+  lang: Lang;
+  pagina: Pagina;
+  titulo?: string;
+}
+const { lang, pagina, titulo } = Astro.props;
+const t = textos[lang];
+const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://korpo.church';
+const url = (l: Lang) => site + rotas[pagina][l];
+const tituloFinal = titulo ? `${titulo} · Korpo` : t.meta.titulo;
+---
+<!doctype html>
+<html lang={htmlLang[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloFinal}</title>
+    <meta name="description" content={t.meta.descricao} />
+    <link rel="canonical" href={url(lang)} />
+    {idiomas.map((l) => <link rel="alternate" hreflang={htmlLang[l]} href={url(l)} />)}
+    <link rel="alternate" hreflang="x-default" href={url('pt')} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#16142B" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Korpo" />
+    <meta property="og:title" content={tituloFinal} />
+    <meta property="og:description" content={t.meta.descricao} />
+    <meta property="og:url" content={url(lang)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
